@@ -1,0 +1,141 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+html,body{
+  width:100%;
+  height: 100%;
+  background-color: rgb(235, 113, 115);
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+.word{
+  color: white;
+  margin-right: 30px;
+}
+.word h4{
+  color: rgb(255, 175, 175);
+}
+.monster{
+  position: relative;
+  width: 110px;
+  height: 100px;
+  border-radius: 20px;
+  margin: 10px;
+  background-color: rgb(254, 102, 82);
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow:0 10px 20px rgba(0, 0, 0, 0.2);
+  animation: jumping 1s infinite alternate;
+}
+.monster .eye{
+  width: 40%;
+  height:40%;
+  border-radius:50%;
+  background-color: #fff;
+  margin: 10px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+.monster .eyeball{
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background-color: rgb(3,63,124);
+  animation: eyemove 2s infinite alternate;
+}
+.monster .mouth{
+  width:32%;
+  height:12px;
+  border-radius: 12px;
+  background-color: #fff;
+}
+.blue{
+  background-color: rgb(3,63,124);
+  animation-delay:0.5s;
+}
+.blue .eyeball{
+  background-color:rgb(254, 115, 82);
+}
+.blue .mouth{
+  background-color:rgb(254, 115, 82);
+}
+.monster::before,.monster::after{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 20%;
+  height: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  top: -10%;
+  left: 50%;
+}
+.monster::before{
+  transform: translateX(-70%) rotate(45deg);
+}
+.monster::after{
+  transform: translateX(-30%) rotate(-45deg);
+}
+@keyframes jumping{
+  50%{
+    top: 0;
+    box-shadow:0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  100%{
+    top: -50px;
+    box-shadow:0 120px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+@keyframes eyemove{
+  0%{
+    transform: translateX(-50%);
+  }
+  10%{
+    transform: translateX(-50%);
+  }
+  90%{
+    transform:translateX(50%);
+  }
+  100%{
+    transform:translateX(50%);
+  }
+}
+.LoadingPage{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(3,63,124);
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  flex-direction:column;
+  transition: 0.5s;
+}
+.Loading{
+  width: 200px;
+  height:8px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 50px;
+  overflow:hidden;
+}
+.bar{
+  width: 0%;
+  height: 100%;
+  background-color: rgb(254, 115, 82);
+}
+.LoadingPage.complete{
+  transition: 1s;
+  opacity: 0;
+}
+.LoadingPage.complete .monster{
+  transition: 0.5s;
+  transform: rotateZ(360deg);
+}
